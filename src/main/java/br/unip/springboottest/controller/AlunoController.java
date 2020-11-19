@@ -16,6 +16,16 @@ public class AlunoController {
 	@Autowired
 	private AlunoRepository alunoRepo;
 
+//	@Autowired
+//	public AlunoController(AlunoRepository alunoRepo) {
+//		this.alunoRepo = alunoRepo;
+//	}
+
+//	@Autowired
+//	public void setAlunoRepo(AlunoRepository alunoRepo) {
+//		this.alunoRepo = alunoRepo;
+//	}
+
 	@GetMapping("/alunos")
 	public ModelAndView listarAlunos() {
 		ModelAndView mv = new ModelAndView("lista_alunos");
