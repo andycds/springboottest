@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.unip.springboottest.model.Aluno;
-import br.unip.springboottest.repository.AlunoRepository;
+import br.unip.springboottest.service.AlunoService;
 
 @Controller
 public class AlunoController {
-	@Autowired
-	private AlunoRepository alunoRepo;
+//	@Autowired
+//	private AlunoRepository alunoRepo;
 
 //	@Autowired
 //	public AlunoController(AlunoRepository alunoRepo) {
@@ -26,10 +26,13 @@ public class AlunoController {
 //		this.alunoRepo = alunoRepo;
 //	}
 
+	@Autowired
+	private AlunoService alunoService;
+
 	@GetMapping("/alunos")
 	public ModelAndView listarAlunos() {
 		ModelAndView mv = new ModelAndView("lista_alunos");
-		List<Aluno> alunos = alunoRepo.findAll();
+		List<Aluno> alunos = alunoService.listarTodos();
 		mv.addObject("alunos", alunos);
 		mv.addObject(new Aluno());
 		return mv;
@@ -37,7 +40,7 @@ public class AlunoController {
 
 	@PostMapping("/alunos")
 	public String salvar(Aluno aluno) {
-		alunoRepo.save(aluno);
+		alunoService.salvar(aluno);
 		return "redirect:/alunos";
 	}
 }

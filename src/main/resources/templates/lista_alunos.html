@@ -24,13 +24,17 @@
 				<thead>
 					<tr>
 						<th>Nome</th>
-						<th>Média</th>
+						<th>Nota 1</th>
+						<th>Nota 2</th>
+						<th>Média Final</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="aluno : ${alunos}">
 						<td th:text="${aluno.nome}"></td>
-						<td th:text="${aluno.media}"></td>
+						<td th:text="${aluno.nota1}"></td>
+						<td th:text="${aluno.nota2}"></td>
+						<td th:text="${aluno.mediaFinal}"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -39,9 +43,9 @@
 			<form class="form-inline" method="post" th:object="${aluno}"
 				th:action="@{/alunos}">
 				<div>
-					<input class="form-control" type="text" placeholder="Nome"
-						th:field="*{nome}" /> <input class="form-control" type="text"
-						placeholder="Média" th:field="*{media}" />
+					<input class="form-control" type="text" placeholder="Nome" th:field="*{nome}" /> 
+					<input class="form-control" type="text" placeholder="Nota1" th:field="*{nota1}" />
+					<input class="form-control" type="text" placeholder="Nota2" th:field="*{nota2}" />
 					<button class="btn btn-warning" type="submit">Adicionar</button>
 				</div>
 			</form>
